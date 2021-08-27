@@ -1,0 +1,65 @@
+{% extends "app/base.html" %}
+
+
+
+{% block content %}
+{% load static %}
+<style>
+
+.btn {
+    min-width: 250px;
+}
+
+</style>
+
+<div class="body">
+
+<div class="container mt-4 my-3">
+    <div class="row">
+
+        <div class="col-sm-8">
+
+    <form action="" method="post" class="form" my-5>
+        {% csrf_token %}
+
+
+        {% for f in fm  %}
+
+        {{f.label_tag}} {{f}} {{f.errors | striptags}}
+          
+        {% endfor %}
+
+        <br>
+        <div class="mx-auto" style="width: 250px;">
+           
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+          </div>
+
+
+      
+    </form>
+    <br>
+
+
+    <div class="form-group">
+    {% if messages %}
+
+      {% for message in messages  %}
+
+      <div class="alert alert-success">
+
+      {{message}}
+    </div>
+      {% endfor %}
+      
+    {% endif %}
+   </div>
+</div>
+</div>
+</div>
+</div>
+
+  
+{% endblock content %}

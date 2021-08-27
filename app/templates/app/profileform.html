@@ -1,0 +1,64 @@
+{% extends "app/base.html" %}
+
+
+
+{% block content %}
+
+
+<div class="container mt-4">
+
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="form-group">
+
+   <div class="alert alert-success">
+      {{message}}
+
+   </div>
+
+</div>
+  
+{% endfor %}
+  
+{% endif %}
+
+
+
+
+<form action="" method="post">
+   {% csrf_token %}
+
+   {% for form in userform  %}
+ 
+   {{form.label_tag}} {{form}} {{form.errors}} <br>
+     
+   {% endfor %}
+
+   <button type="submit" class="btn btn-primary">Edit</button>
+
+</form>
+  
+<!-- {% if messages %}
+
+{% for mess in messages  %}
+
+<div class="form-group">
+
+   <div class="alert alert-success">
+      {{mess}}
+
+   </div>
+
+</div> -->
+  
+{% endfor %}
+  
+{% endif %}
+
+<a href="{% url 'password' %}"> Password Change</a>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<hr>
+
+
+<div class="container mt-4">
+
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% if messages %}
+
+    {% for mess in messages %}
+
+    <div class="group-form">
+
+        <div class="alert alert-warning">
+            {{mess}}
+
+        </div>
+
+    </div>
+      
+    {% endfor %}
+      
+    {% endif %}
+
+
+
+    {% if fmlogin.non_field_errors %}
+
+    {% for error in fmlogin.non_field_errors  %}
+
+    <div class="form-group">
+
+        <div class="alert alert-success">   {{error}}</div>
+
+     
+
+    </div>
+
+
+
+
+      
+    {% endfor %}
+      
+    {% endif %}
+
+
+    {% for fm in fmlogin %}
+
+    {{fm.label_tag}} {{fm}} {{fm.errors}} <br> <br>
+      
+    {% endfor %}
+       <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+</form>
+</div>
+
+
+
+
+{% endblock content %}
